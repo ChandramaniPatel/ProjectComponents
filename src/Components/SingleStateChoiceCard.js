@@ -30,30 +30,40 @@ export default class SingleStateChoiceCard extends Component {
     );
   };
 
+  renderSection = () =>{
+    if (item.isSelected == true) {
+      <Image source={require("../../src/assets/right.jpg")}  
+             style={{width:40,height:40,}}
+      />
+      } else {
+       <Image  source = {null}/>
+      }
+  }
+
     render() {
         return (
           <View style={styles.container}>
             <FlatList
             // ItemSeparatorComponent={this.renderSeparator}
               data={[
-                { key: 'Buttons' },
-                { key: 'Single State Choice Cards' },
-                { key: 'Multi State Choice Cards' },
-                { key: 'Multi Line Choice Cards' },
-                { key: 'Rounded Select' },
-                { key: 'Top Up Mini Choice Cards' },
-                { key: 'CheckBox' },
-                { key: 'RadioButton' },
-                { key: 'Navigational List' },
+                { text1 : 'Buttons' ,isSelected : false },
+                { text1: 'Single State Choice Cards' ,isSelected : false},
+                { text1: 'Multi State Choice Cards' ,isSelected : false},
+                { text1: 'Multi Line Choice Cards' ,isSelected : false},
+                { text1: 'Rounded Select' , isSelected : false},
+                { text1: 'Top Up Mini Choice Cards' ,isSelected : false},
+                { text1: 'CheckBox' ,isSelected : false},
+                { text1: 'RadioButton' ,isSelected : false},
+                { text1: 'Navigational List' ,isSelected : false},
               ]}
               renderItem={
                 ({ item }) =>   
-                <TouchableOpacity onPress={() => this._onPressButton(item.key)}>
+                <TouchableOpacity onPress={() => this._onPressButton(item.text1)}>
                     <View style={rowStyles.container}>
-                       <Text style={rowStyles.textItem}>{item.key} </Text>
-                       <Image source={require("../../src/assets/right.jpg")}  
-                              style={{width:40,height:40,}}
-                       />
+                       <Text style={rowStyles.textItem}>{item.text1} </Text>
+                       <View>
+                       {/* {this.renderSection()} */}
+                       </View>
                     </View>
                 </TouchableOpacity>
             }
